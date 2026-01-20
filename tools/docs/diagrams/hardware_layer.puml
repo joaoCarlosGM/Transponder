@@ -1,0 +1,33 @@
+@startuml Hardware
+title Hardware Abstraction Layers
+
+package "Application" {
+  manager_fsm
+}
+
+package "Services" {
+  tdma_scheduler
+  event_dispatcher
+}
+
+package "Drivers" {
+  lora_driver
+  gps_driver
+  oled_driver
+  led_driver
+  buzzer_driver
+}
+
+package "HAL" {
+  spi_hal
+  i2c_hal
+  uart_hal
+  gpio_hal
+}
+
+manager_fsm --> tdma_scheduler
+tdma_scheduler --> lora_driver
+lora_driver --> spi_hal
+gps_driver --> uart_hal
+oled_driver --> i2c_hal
+@enduml

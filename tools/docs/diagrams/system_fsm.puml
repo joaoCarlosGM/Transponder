@@ -1,0 +1,24 @@
+@startuml Machine
+title Global System State Machine
+
+[*] --> INIT
+
+INIT --> IDLE : init_ok
+INIT --> ERROR : init_fail
+
+IDLE --> GPS_SYNC : gps_detected
+IDLE --> LOW_POWER : idle_timeout
+
+GPS_SYNC --> TDMA_SYNC : time_valid
+GPS_SYNC --> IDLE : gps_lost
+
+TDMA_SYNC --> OPERATIONAL : tdma_locked
+TDMA_SYNC --> GPS_SYNC : sync_lost
+
+OPERATIONAL --> ERROR : critical_fault
+OPERATIONAL --> LOW_POWER : sleep_request
+
+LOW_POWER --> IDLE : wakeup_event
+
+ERROR --> [*]
+@enduml

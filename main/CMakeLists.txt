@@ -1,0 +1,9 @@
+idf_component_register(
+    SRCS
+        "main.c"
+        "hw_bringup.c"
+    INCLUDE_DIRS
+        "."
+    REQUIRES
+        drivers
+)

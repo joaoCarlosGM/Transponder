@@ -1,0 +1,9 @@
+idf_component_register(
+    SOURCES
+    "buzzer_driver.c"
+    INCLUDE_DIRS
+    "."
+    REQUIRED
+        driver
+        gpio
+)

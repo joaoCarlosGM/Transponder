@@ -1,0 +1,21 @@
+@startuml LoRa
+title LoRa Communication FSM
+
+[*] --> LORA_INIT
+
+LORA_INIT --> LORA_IDLE : init_ok
+LORA_INIT --> LORA_ERROR : init_fail
+
+LORA_IDLE --> LORA_TX : tx_request
+LORA_IDLE --> LORA_RX : rx_interrupt
+
+LORA_TX --> LORA_IDLE : tx_done
+LORA_RX --> LORA_IDLE : rx_done
+
+LORA_IDLE --> LORA_SLEEP : sleep_cmd
+LORA_SLEEP --> LORA_IDLE : wakeup
+
+LORA_ERROR --> LORA_RESET : recover
+LORA_RESET --> LORA_INIT
+
+@enduml
