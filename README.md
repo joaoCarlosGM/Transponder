@@ -25,11 +25,76 @@ files that provide set of directives and instructions describing the project's s
 Below is short explanation of remaining files in the project folder.
 
 ```
+transponder/
 ├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
+├── sdkconfig
+├── sdkconfig.defaults
+│
+├── main/
+│   ├── CMakeLists.txt
+│   └── app_main.c
+│
+├── components/
+│   ├── system/
+│   │   ├── CMakeLists.txt
+│   │   ├── system_init.c
+│   │   ├── system_init.h
+│   │   ├── system_events.c
+│   │   └── system_events.h
+│   │
+│   ├── lora/
+│   │   ├── CMakeLists.txt
+│   │   ├── lora_fsm.c
+│   │   ├── lora_fsm.h
+│   │   ├── lora_driver.c
+│   │   ├── lora_driver.h
+│   │   ├── lora_packets.h
+│   │   └── lora_events.h
+│   │
+│   ├── tdma/
+│   │   ├── CMakeLists.txt
+│   │   ├── tdma_scheduler.c
+│   │   ├── tdma_scheduler.h
+│   │   └── tdma_config.h
+│   │
+│   ├── gps/
+│   │   ├── CMakeLists.txt
+│   │   ├── gps_driver.c
+│   │   ├── gps_driver.h
+│   │   ├── gps_time.c
+│   │   └── gps_time.h
+│   │
+│   ├── navigation/
+│   │   ├── CMakeLists.txt
+│   │   ├── navigation.c
+│   │   └── navigation.h
+│   │
+│   ├── led_ring/
+│   │   ├── CMakeLists.txt
+│   │   ├── led_ring_driver.c
+│   │   ├── led_ring_driver.h
+│   │   └── led_ring_types.h
+│   │
+│   ├── display/
+│   │   ├── CMakeLists.txt
+│   │   ├── display_task.c
+│   │   └── display_task.h
+│   │
+│   ├── manager/
+│   │   ├── CMakeLists.txt
+│   │   ├── manager_fsm.c
+│   │   ├── manager_fsm.h
+│   │   └── manager_web.c
+│   │
+│   └── common/
+│       ├── CMakeLists.txt
+│       ├── app_types.h
+│       ├── app_config.h
+│       └── app_utils.c
+│
+└── tools/
+    ├── scripts/
+    └── docs/
 ```
 Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
 They are not used or needed when building with CMake and idf.py.
